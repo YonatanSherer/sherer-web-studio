@@ -1,0 +1,46 @@
+{
+  "name": "ContactSubmission",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Full name of the person"
+    },
+    "business_name": {
+      "type": "string",
+      "description": "Name of the business"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone or WhatsApp number"
+    },
+    "preferred_contact": {
+      "type": "string",
+      "description": "Preferred method of contact"
+    },
+    "website_type": {
+      "type": "string",
+      "description": "Type of website needed"
+    },
+    "budget": {
+      "type": "string",
+      "description": "Estimated budget range"
+    },
+    "message": {
+      "type": "string",
+      "description": "Additional message"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language the form was submitted in"
+    }
+  },
+  "required": [
+    "full_name",
+    "email"
+  ]
+}
