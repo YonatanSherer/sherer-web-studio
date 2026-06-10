@@ -1,13 +1,33 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { CONTENT, NAV_LINKS } from "./siteConfig";
 
 const LanguageContext = createContext();
 
+const RTL_LANGS = ["he", "ar"];
+
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState("en");
+  const [lang, setLangState] = useState(() => {
+    try {
+      return localStorage.getItem("yws_lang") || "en";
+    } catch {
+      return "en";
+    }
+  });
+
+  const setLang = useCallback((code) => {
+    setLangState(code);
+    try { localStorage.setItem("yws_lang", code); } catch {}
+    document.documentElement.lang = code;
+    document.documentElement.dir = RTL_LANGS.includes(code) ? "rtl" : "ltr";
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = RTL_LANGS.includes(lang) ? "rtl" : "ltr";
+  }, [lang]);
 
   const t = useCallback((key) => {
-    return CONTENT[lang]?.[key] || CONTENT.en[key] || key;
+    return CONTENT[lang]?.[key] ?? CONTENT.en[key] ?? key;
   }, [lang]);
 
   const nav = useCallback((id) => {
@@ -15,7 +35,7 @@ export function LanguageProvider({ children }) {
     return link ? link[lang] || link.en : id;
   }, [lang]);
 
-  const isRTL = lang === "he";
+  const isRTL = RTL_LANGS.includes(lang);
   const dir = isRTL ? "rtl" : "ltr";
 
   return (
