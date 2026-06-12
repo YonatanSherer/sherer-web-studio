@@ -26,7 +26,7 @@ export default function FeaturedWork() {
       id="work"
       dir={isRTL ? "rtl" : "ltr"}
       className="py-14 md:py-20"
-      style={{ scrollMarginTop: "72px" }}
+      style={{ scrollMarginTop: "80px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

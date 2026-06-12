@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLang } from "@/lib/LanguageContext";
+import { NAV_HEIGHT } from "@/lib/scrollUtils";
 import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import TrustStrip from "@/components/landing/TrustStrip";
@@ -15,6 +16,7 @@ import FinalCta from "@/components/landing/FinalCta";
 import Footer from "@/components/landing/Footer";
 import FloatingButtons from "@/components/landing/FloatingButtons";
 
+// Must match section IDs rendered in each component
 const SECTION_IDS = ["home", "work", "services", "packages", "process", "faq", "contact"];
 
 export default function Home() {
@@ -22,35 +24,41 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const OFFSET = 100;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Find the topmost visible section
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: `-${OFFSET}px 0px -60% 0px`,
-        threshold: 0,
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const viewportH = window.innerHeight;
+
+      // Near the top → always "home"
+      if (scrollY < 80) {
+        setActiveSection("home");
+        return;
       }
-    );
 
-    SECTION_IDS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+      // Walk sections from bottom to top to find the first one whose top
+      // has crossed the sticky-nav threshold (NAV_HEIGHT + small buffer)
+      const threshold = NAV_HEIGHT + 40;
+      let found = null;
+      for (let i = SECTION_IDS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SECTION_IDS[i]);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (scrollY >= top - threshold) {
+          found = SECTION_IDS[i];
+          break;
+        }
+      }
+      if (found) setActiveSection(found);
+    };
 
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // initial
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div dir={dir} className="min-h-screen bg-background">
       <Header activeSection={activeSection} />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <TrustStrip />
         <FeaturedWork />

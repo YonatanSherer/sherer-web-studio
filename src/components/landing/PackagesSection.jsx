@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { useLang } from "@/lib/LanguageContext";
+import { usePricing } from "@/lib/usePricing";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Check, Star, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { base44 } from "@/api/base44Client";
+import { scrollToSection } from "@/lib/scrollUtils";
 
 export default function PackagesSection() {
-  const { t, isRTL } = useLang();
-  const packages = t("packages");
+  const { t, isRTL, lang } = useLang();
+  const { landingPrice, businessPrice, multilingualPrice } = usePricing(lang);
+  const rawPackages = t("packages");
+  // Inject dynamic prices
+  const packages = rawPackages.map((pkg, i) => ({
+    ...pkg,
+    price: [landingPrice, businessPrice, multilingualPrice][i] ?? pkg.price,
+  }));
   const [expandedIdx, setExpandedIdx] = useState(null);
   const [showAddons, setShowAddons] = useState(false);
 
@@ -23,7 +31,7 @@ export default function PackagesSection() {
       id="packages"
       dir={isRTL ? "rtl" : "ltr"}
       className="py-14 md:py-20 bg-background"
-      style={{ scrollMarginTop: "72px" }}
+      style={{ scrollMarginTop: "80px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -116,7 +124,7 @@ export default function PackagesSection() {
                           : "bg-foreground/5 hover:bg-foreground/10 text-foreground border border-border/50"
                       }`}
                       onClick={() => {
-                        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                        scrollToSection("contact");
                         base44.analytics.track({ eventName: "package_cta_click", properties: { package: pkg.name } });
                       }}
                     >

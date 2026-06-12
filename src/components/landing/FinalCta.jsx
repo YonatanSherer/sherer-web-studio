@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
+import { scrollToSection } from "@/lib/scrollUtils";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +48,7 @@ export default function FinalCta() {
             size="lg"
             className="bg-[#00b4ff] hover:bg-[#0099dd] text-white font-semibold px-5 h-11 rounded-xl shadow-md shadow-[#00b4ff]/20 text-sm"
             onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              scrollToSection("contact");
               base44.analytics.track({ eventName: "final_cta_free_quote" });
             }}
           >

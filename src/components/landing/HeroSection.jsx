@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Smartphone, Languages, DollarSign, Target, Code } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
+import { scrollToSection } from "@/lib/scrollUtils";
 
 const TRUST_ICONS = [Smartphone, Languages, DollarSign, Target, Code];
 
@@ -26,19 +27,14 @@ export default function HeroSection() {
   const { t, isRTL } = useLang();
   const trustPoints = t("heroTrust");
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 72;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
+  const scrollTo = scrollToSection;
 
   return (
     <section
       id="home"
       dir={isRTL ? "rtl" : "ltr"}
       className="relative min-h-[92vh] flex items-center overflow-hidden"
-      style={{ scrollMarginTop: "72px" }}
+      style={{ scrollMarginTop: "80px" }}
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#060a14] via-[#0a1022] to-[#081428]" />

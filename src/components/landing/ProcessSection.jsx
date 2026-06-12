@@ -3,6 +3,7 @@ import { useLang } from "@/lib/LanguageContext";
 import { motion } from "framer-motion";
 import { Search, PenTool, Code, Rocket, ArrowRight } from "lucide-react";
 import { base44 } from "@/api/base44Client";
+import { scrollToSection } from "@/lib/scrollUtils";
 
 const STEP_ICONS = [Search, PenTool, Code, Rocket];
 
@@ -15,7 +16,7 @@ export default function ProcessSection() {
       id="process"
       dir={isRTL ? "rtl" : "ltr"}
       className="py-14 md:py-20 bg-muted/20"
-      style={{ scrollMarginTop: "72px" }}
+      style={{ scrollMarginTop: "80px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -101,7 +102,7 @@ export default function ProcessSection() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             onClick={() => {
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              scrollToSection("contact");
               base44.analytics.track({ eventName: "process_cta_click" });
             }}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00b4ff] hover:bg-[#0099dd] text-white text-sm font-semibold shadow-md shadow-[#00b4ff]/20 transition-colors"

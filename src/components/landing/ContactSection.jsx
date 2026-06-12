@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Send, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
+import { usePricing } from "@/lib/usePricing";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -26,6 +27,7 @@ const LINEIcon = () => (
 export default function ContactSection() {
   const { t, isRTL, lang } = useLang();
   const form = t("contactForm");
+  const { budgetOptions } = usePricing(lang);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -62,7 +64,7 @@ export default function ContactSection() {
       id="contact"
       dir={isRTL ? "rtl" : "ltr"}
       className="py-14 md:py-20 bg-muted/20"
-      style={{ scrollMarginTop: "72px" }}
+      style={{ scrollMarginTop: "80px" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -222,7 +224,7 @@ export default function ContactSection() {
                     <Select value={data.budget} onValueChange={(v) => update("budget", v)}>
                       <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
                       <SelectContent>
-                        {form.budgets.map((b) => <SelectItem key={b} value={b}>{b}</SelectItem>)}
+                        {budgetOptions.map((b) => <SelectItem key={b} value={b}>{b}</SelectItem>)}
                       </SelectContent>
                     </Select>
                   </div>

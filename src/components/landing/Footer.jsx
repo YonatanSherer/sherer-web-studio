@@ -2,6 +2,7 @@ import React from "react";
 import { useLang } from "@/lib/LanguageContext";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/siteConfig";
 import { Linkedin, Github, Mail } from "lucide-react";
+import { scrollToSection } from "@/lib/scrollUtils";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -18,12 +19,7 @@ const LINEIcon = () => (
 export default function Footer() {
   const { t, isRTL, lang } = useLang();
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const top = el.getBoundingClientRect().top + window.scrollY - 72;
-    window.scrollTo({ top, behavior: "smooth" });
-  };
+  const scrollTo = scrollToSection;
 
   return (
     <footer dir={isRTL ? "rtl" : "ltr"} className="bg-[#060a14] text-white/60 border-t border-white/8">
