@@ -20,6 +20,17 @@ export const SITE_CONFIG = {
 };
 
 // ============================================================
+// CONTACT LINKS — single source of truth for all buttons
+// ============================================================
+export const CONTACT_LINKS = {
+  whatsapp: "https://wa.me/972542490335",
+  line: "https://line.me/ti/p/vJzaJqx8pt",
+  linkedin: "https://www.linkedin.com/in/yonatan-sherer",
+  github: "https://github.com/YonatanSherer",
+  email: "mailto:yonatansh103@gmail.com",
+};
+
+// ============================================================
 // PORTFOLIO PROJECTS — Edit URLs and screenshots here
 // ============================================================
 
@@ -350,6 +361,12 @@ export const CONTENT = {
     // Floating buttons
     floatWhatsApp: "Message Yonatan on WhatsApp",
     floatLINE: "Message Yonatan on LINE",
+    floatLinkedIn: "Connect on LinkedIn",
+    floatGitHub: "View GitHub Profile",
+    floatEmail: "Send an Email",
+
+    // Hero badge
+    heroBadge: "Available Now · Upgrade Your Online Presence",
 
     // Popular badge
     popularBadge: "Most Popular",
@@ -527,6 +544,10 @@ export const CONTENT = {
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. כל הזכויות שמורות.`,
     floatWhatsApp: "שלח הודעה ליונתן בוואטסאפ",
     floatLINE: "שלח הודעה ליונתן ב-LINE",
+    floatLinkedIn: "התחבר ב-LinkedIn",
+    floatGitHub: "צפה בפרופיל GitHub",
+    floatEmail: "שלח אימייל",
+    heroBadge: "זמין עכשיו · שדרג את הנוכחות המקוונת שלך",
     popularBadge: "הכי פופולרי",
     startingFrom: "החל מ-",
   },
@@ -702,6 +723,10 @@ export const CONTENT = {
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. สงวนลิขสิทธิ์`,
     floatWhatsApp: "ส่งข้อความถึง Yonatan ทาง WhatsApp",
     floatLINE: "ส่งข้อความถึง Yonatan ทาง LINE",
+    floatLinkedIn: "เชื่อมต่อบน LinkedIn",
+    floatGitHub: "ดูโปรไฟล์ GitHub",
+    floatEmail: "ส่งอีเมล",
+    heroBadge: "พร้อมให้บริการ · ยกระดับตัวตนออนไลน์ของคุณ",
     popularBadge: "ยอดนิยม",
     startingFrom: "เริ่มต้นที่ ",
   },
@@ -877,6 +902,10 @@ export const CONTENT = {
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. جميع الحقوق محفوظة.`,
     floatWhatsApp: "راسل يوناتان على واتساب",
     floatLINE: "راسل يوناتان على LINE",
+    floatLinkedIn: "تواصل على LinkedIn",
+    floatGitHub: "استعرض ملف GitHub",
+    floatEmail: "أرسل بريداً إلكترونياً",
+    heroBadge: "متاح الآن · طوّر حضورك الرقمي",
     popularBadge: "الأكثر شعبية",
     startingFrom: "يبدأ من ",
   },
@@ -1052,6 +1081,10 @@ export const CONTENT = {
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. Todos los derechos reservados.`,
     floatWhatsApp: "Mensaje a Yonatan en WhatsApp",
     floatLINE: "Mensaje a Yonatan en LINE",
+    floatLinkedIn: "Conectar en LinkedIn",
+    floatGitHub: "Ver perfil de GitHub",
+    floatEmail: "Enviar un correo",
+    heroBadge: "Disponible Ahora · Mejora Tu Presencia Online",
     popularBadge: "Más Popular",
     startingFrom: "Desde ",
   },
@@ -1158,6 +1191,8 @@ export const CONTENT = {
     footerNav: "Navigation", footerContact: "Contact",
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. Tous droits réservés.`,
     floatWhatsApp: "Envoyer un message à Yonatan sur WhatsApp", floatLINE: "Envoyer un message à Yonatan sur LINE",
+    floatLinkedIn: "Se connecter sur LinkedIn", floatGitHub: "Voir le profil GitHub", floatEmail: "Envoyer un e-mail",
+    heroBadge: "Disponible Maintenant · Améliorez Votre Présence en Ligne",
     popularBadge: "Le Plus Populaire", startingFrom: "À partir de ",
   },
 
@@ -1263,6 +1298,8 @@ export const CONTENT = {
     footerNav: "Navigation", footerContact: "Kontakt",
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. Alle Rechte vorbehalten.`,
     floatWhatsApp: "Nachricht an Yonatan auf WhatsApp", floatLINE: "Nachricht an Yonatan auf LINE",
+    floatLinkedIn: "Auf LinkedIn verbinden", floatGitHub: "GitHub-Profil ansehen", floatEmail: "E-Mail senden",
+    heroBadge: "Jetzt verfügbar · Online-Präsenz verbessern",
     popularBadge: "Am Beliebtesten", startingFrom: "Ab ",
   },
 
@@ -1368,6 +1405,8 @@ export const CONTENT = {
     footerNav: "Навигация", footerContact: "Контакты",
     footerCopyright: `© ${new Date().getFullYear()} Sherer Web Studio. Все права защищены.`,
     floatWhatsApp: "Написать Йонатану в WhatsApp", floatLINE: "Написать Йонатану в LINE",
+    floatLinkedIn: "Связаться в LinkedIn", floatGitHub: "Профиль на GitHub", floatEmail: "Отправить письмо",
+    heroBadge: "Доступен сейчас · Улучшите онлайн-присутствие",
     popularBadge: "Самый Популярный", startingFrom: "От ",
   },
 };
