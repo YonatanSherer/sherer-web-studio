@@ -1,0 +1,95 @@
+{
+  "name": "PortfolioProject",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Project title"
+    },
+    "shortDescription": {
+      "type": "string",
+      "description": "Short one-line description shown on the card"
+    },
+    "fullDescription": {
+      "type": "string",
+      "description": "Longer description for detail view"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Business Website",
+        "Multilingual Website",
+        "Web Application",
+        "Landing Page",
+        "AI Tool",
+        "Learning App",
+        "Productivity App",
+        "Portfolio"
+      ],
+      "description": "Project category"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Live Demo",
+        "Demo Project",
+        "Coming Soon",
+        "Case Study"
+      ],
+      "description": "Project status"
+    },
+    "previewImage": {
+      "type": "string",
+      "description": "URL to the project preview image"
+    },
+    "liveDemoUrl": {
+      "type": "string",
+      "description": "URL to the live demo"
+    },
+    "githubUrl": {
+      "type": "string",
+      "description": "URL to the GitHub repository"
+    },
+    "technologies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Technologies used"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Languages supported"
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Project deliverables"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Show as featured project"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show on public website"
+    },
+    "displayOrder": {
+      "type": "number",
+      "default": 0,
+      "description": "Sort order on the public site (lower = first)"
+    }
+  },
+  "required": [
+    "title",
+    "category",
+    "status"
+  ]
+}
