@@ -174,7 +174,7 @@ export default function HeroSection() {
                   <div className="w-3 h-3 rounded-full bg-[#28c940]" />
                 </div>
                 <div className="flex-1 bg-[#0a1022] rounded-md h-6 flex items-center px-3">
-                  <span className="text-white/30 text-xs font-mono">yonatanwebstudio.com</span>
+                  <span className="text-white/30 text-xs font-mono">shererwebstudio.com</span>
                 </div>
               </div>
               {/* Preview image */}

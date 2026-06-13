@@ -95,7 +95,7 @@ export default function Footer() {
                    className="flex items-center gap-2 hover:text-white transition-colors text-[#06C755]/80"
                    style={{ flexDirection: isRTL ? "row-reverse" : "row" }}>
                   <LINEIcon />
-                  LINE · @yonatanwebstudio
+                  LINE · @shererwebstudio
                 </a>
               </li>
             </ul>
