@@ -36,17 +36,14 @@ const GmailIcon = ({ size = 18 }) => (
 );
 
 // Single floating button with tooltip
-function FloatBtn({ href, label, bgClass, iconColor, children, onClick, tooltip, isRTL }) {
+function FloatBtn({ href, label, bgClass, iconColor, children, onClick, tooltip }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div className="relative flex items-center group">
       {hovered && (
-        <div className={`absolute ${isRTL ? "left-14" : "right-14"} bg-[#060a14] text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap border border-white/10 pointer-events-none z-10`}>
+        <div className="absolute right-14 bg-[#060a14] text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow-lg whitespace-nowrap border border-white/10 pointer-events-none z-10">
           {tooltip}
-          {isRTL
-            ? <div className="absolute top-1/2 left-0 -translate-x-1 -translate-y-1/2 w-2 h-2 rotate-45 bg-[#060a14] border-l border-b border-white/10" />
-            : <div className="absolute top-1/2 right-0 translate-x-1 -translate-y-1/2 w-2 h-2 rotate-45 bg-[#060a14] border-r border-t border-white/10" />
-          }
+          <div className="absolute top-1/2 right-0 translate-x-1 -translate-y-1/2 w-2 h-2 rotate-45 bg-[#060a14] border-r border-t border-white/10" />
         </div>
       )}
       <a
@@ -66,7 +63,7 @@ function FloatBtn({ href, label, bgClass, iconColor, children, onClick, tooltip,
 }
 
 export default function FloatingButtons() {
-  const { t, isRTL } = useLang();
+  const { t } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const buttons = [
@@ -120,16 +117,16 @@ export default function FloatingButtons() {
   return (
     <>
       {/* Desktop: vertical stack, always visible */}
-      <div className={`hidden md:flex fixed bottom-7 z-50 flex-col gap-2 ${isRTL ? "left-7" : "right-7"}`}>
+      <div className="hidden md:flex fixed bottom-7 right-7 z-50 flex-col gap-2">
         {buttons.map((btn) => (
-          <FloatBtn key={btn.label} {...btn} isRTL={isRTL} onClick={btn.track}>
+          <FloatBtn key={btn.label} {...btn} onClick={btn.track}>
             {btn.icon}
           </FloatBtn>
         ))}
       </div>
 
       {/* Mobile: single toggle button that expands */}
-      <div className={`flex md:hidden fixed bottom-5 z-50 flex-col gap-2 ${isRTL ? "left-5 items-start" : "right-5 items-end"}`}>
+      <div className="flex md:hidden fixed bottom-5 right-5 z-50 flex-col items-end gap-2">
         <AnimatePresence>
           {mobileOpen && (
             <motion.div

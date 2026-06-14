@@ -141,9 +141,10 @@ export default function Header({ activeSection }) {
             {/* Desktop Nav */}
             <nav
               className="hidden lg:flex items-center gap-0.5"
+              style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
               aria-label="Main navigation"
             >
-              {(isRTL ? [...NAV_LINKS].reverse() : NAV_LINKS).map((link) => {
+              {NAV_LINKS.map((link) => {
                 const isActive = activeSection === link.id;
                 return (
                   <button
@@ -244,7 +245,7 @@ export default function Header({ activeSection }) {
               aria-label="Mobile navigation"
             >
               <div className="px-4 py-3 space-y-0.5" dir={isRTL ? "rtl" : "ltr"}>
-                {(isRTL ? [...NAV_LINKS].reverse() : NAV_LINKS).map((link) => {
+                {NAV_LINKS.map((link) => {
                   const isActive = activeSection === link.id;
                   return (
                     <button
