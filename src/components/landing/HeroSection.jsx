@@ -118,7 +118,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/8 hover:border-white/30 font-semibold px-6 h-12 text-[15px] rounded-xl transition-all duration-200"
+                className="border-white/25 text-white/85 hover:bg-[#00b4ff]/10 hover:border-[#00b4ff]/60 hover:text-white focus-visible:border-[#00b4ff] focus-visible:text-white font-semibold px-6 h-12 text-[15px] rounded-xl transition-all duration-200"
                 onClick={() => scrollTo("work")}
               >
                 {t("heroCta2")}
