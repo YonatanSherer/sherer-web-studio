@@ -11,7 +11,7 @@ export const SITE_CONFIG = {
   phone: "+972 54-249-0335",
   linkedin: "https://www.linkedin.com/in/yonatan-sherer",
   github: "https://github.com/YonatanSherer",
-  portfolio: "https://yonatansherer.netlify.app",
+  portfolio: "https://shererwebstudio.base44.app",
   facebook: null,
   instagram: null,
   location: "Available remotely · Thailand · Israel · Worldwide",
