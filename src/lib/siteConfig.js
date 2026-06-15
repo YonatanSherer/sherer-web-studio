@@ -147,7 +147,7 @@ export const CONTENT = {
     filterWebApps: "Web Apps",
     statusLive: "Live Demo",
     statusDemo: "Demo Project",
-    btnViewLiveDemo: "View Live Demo",
+    btnViewLiveDemo: "View Live",
     btnViewProject: "View Project",
     btnPreviewSoon: "Preview Coming Soon",
     langLabel: "Languages",
