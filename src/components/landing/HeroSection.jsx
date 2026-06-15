@@ -52,7 +52,7 @@ export default function HeroSection() {
     <section
       id="home"
       dir={isRTL ? "rtl" : "ltr"}
-      className="relative min-h-[92vh] flex items-center overflow-hidden"
+      className="relative min-h-[92vh] flex items-center overflow-hidden w-full"
       style={{ scrollMarginTop: "80px" }}
     >
       {/* Background */}

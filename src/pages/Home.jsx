@@ -56,7 +56,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div dir={dir} className="min-h-screen bg-background">
+    <div dir={dir} className="min-h-screen bg-background overflow-x-hidden w-full">
       <Header activeSection={activeSection} />
       <main id="main-content">
         <HeroSection />
