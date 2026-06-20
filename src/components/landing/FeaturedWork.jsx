@@ -36,6 +36,15 @@ export default function FeaturedWork() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showBadges, setShowBadges] = useState(true);
+
+  useEffect(() => {
+    base44.entities.SiteSettings.filter({ key: "portfolio_show_badges" }).then((results) => {
+      if (results.length > 0) {
+        setShowBadges(results[0].value !== "false");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     base44.entities.PortfolioProject.filter({ active: true }, "displayOrder", 100)
@@ -104,7 +113,7 @@ export default function FeaturedWork() {
         {!loading && (
           <div className="grid md:grid-cols-2 gap-5 lg:gap-6">
             {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} t={t} isRTL={isRTL} />
+              <ProjectCard key={project.id} project={project} index={i} t={t} isRTL={isRTL} showBadges={showBadges} />
             ))}
             {filtered.length === 0 && (
               <div className="col-span-2 text-center py-16 text-muted-foreground">No projects in this category yet.</div>
@@ -116,7 +125,7 @@ export default function FeaturedWork() {
   );
 }
 
-function ProjectCard({ project, index, t, isRTL }) {
+function ProjectCard({ project, index, t, isRTL, showBadges }) {
   const [showDeliverables, setShowDeliverables] = useState(false);
   const statusClass = STATUS_COLORS[project.status] || "bg-slate-500/90 text-white border-0 shadow-sm";
 
@@ -143,14 +152,16 @@ function ProjectCard({ project, index, t, isRTL }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
         {/* Badges */}
-        <div className={`absolute top-3 ${isRTL ? "right-3" : "left-3"} flex gap-2 flex-wrap`}>
-          <Badge className={`text-xs font-medium px-2.5 py-0.5 ${statusClass}`}>
-            {project.status}
-          </Badge>
-          <Badge className="text-xs bg-black/50 text-white border-0 backdrop-blur-sm">
-            {project.category}
-          </Badge>
-        </div>
+        {showBadges && (
+          <div className={`absolute top-3 ${isRTL ? "right-3" : "left-3"} flex gap-2 flex-wrap`}>
+            <Badge className={`text-xs font-medium px-2.5 py-0.5 ${statusClass}`}>
+              {project.status}
+            </Badge>
+            <Badge className="text-xs bg-black/50 text-white border-0 backdrop-blur-sm">
+              {project.category}
+            </Badge>
+          </div>
+        )}
 
         {/* Languages */}
         {project.languages?.length > 0 && (
