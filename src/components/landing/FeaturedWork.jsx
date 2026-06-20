@@ -37,12 +37,16 @@ export default function FeaturedWork() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showBadges, setShowBadges] = useState(true);
+  const [visibleFilters, setVisibleFilters] = useState({ all: true, business: true, multilingual: true, webApp: true });
 
   useEffect(() => {
-    base44.entities.SiteSettings.filter({ key: "portfolio_show_badges" }).then((results) => {
-      if (results.length > 0) {
-        setShowBadges(results[0].value !== "false");
-      }
+    base44.entities.SiteSettings.filter({}).then((results) => {
+      results.forEach(r => {
+        if (r.key === "portfolio_show_badges") setShowBadges(r.value !== "false");
+        if (r.key === "portfolio_visible_filters") {
+          try { setVisibleFilters(prev => ({ ...prev, ...JSON.parse(r.value) })); } catch {}
+        }
+      });
     });
   }, []);
 
@@ -86,21 +90,31 @@ export default function FeaturedWork() {
         </motion.div>
 
         {/* Filters */}
-        <div className={`flex flex-wrap gap-2 mb-8 ${isRTL ? "justify-end" : "justify-center"}`}>
-          {Object.entries(FILTER_LABELS).map(([key, labelKey]) => (
-            <button
-              key={key}
-              onClick={() => setActiveFilter(key)}
-              className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${
-                activeFilter === key
-                  ? "bg-[#00b4ff] text-white border-[#00b4ff] shadow-sm shadow-[#00b4ff]/20"
-                  : "border-border/50 text-muted-foreground hover:border-[#00b4ff]/40 hover:text-foreground"
-              }`}
-            >
-              {t(labelKey)}
-            </button>
-          ))}
-        </div>
+        {(() => {
+          const visibleEntries = Object.entries(FILTER_LABELS).filter(([key]) => visibleFilters[key] !== false);
+          // If active filter is now hidden, fall back to first visible key
+          const activeKeys = visibleEntries.map(([k]) => k);
+          const effectiveFilter = activeKeys.includes(activeFilter) ? activeFilter : (activeKeys[0] ?? "all");
+          if (effectiveFilter !== activeFilter) setActiveFilter(effectiveFilter);
+          if (visibleEntries.length <= 1) return null;
+          return (
+            <div className={`flex flex-wrap gap-2 mb-8 ${isRTL ? "justify-end" : "justify-center"}`}>
+              {visibleEntries.map(([key, labelKey]) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveFilter(key)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border ${
+                    effectiveFilter === key
+                      ? "bg-[#00b4ff] text-white border-[#00b4ff] shadow-sm shadow-[#00b4ff]/20"
+                      : "border-border/50 text-muted-foreground hover:border-[#00b4ff]/40 hover:text-foreground"
+                  }`}
+                >
+                  {t(labelKey)}
+                </button>
+              ))}
+            </div>
+          );
+        })()}
 
         {/* Loading */}
         {loading && (
