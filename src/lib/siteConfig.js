@@ -23,7 +23,7 @@ export const SITE_CONFIG = {
 // CONTACT LINKS — single source of truth for all buttons
 // ============================================================
 export const CONTACT_LINKS = {
-  whatsapp: "https://wa.me/972542490335",
+  whatsapp: "https://wa.me/972000000000",
   line: "https://line.me/ti/p/vJzaJqx8pt",
   linkedin: "https://www.linkedin.com/in/yonatan-sherer",
   github: "https://github.com/YonatanSherer",
