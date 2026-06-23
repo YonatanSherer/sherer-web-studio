@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Plus, Search, Pencil, Trash2, Copy, Eye, EyeOff, Star, ChevronUp, ChevronDown, ArrowLeft } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import PortfolioDisplaySettings from "@/components/admin/PortfolioDisplaySettings";
+import BrandSettings from "@/components/admin/BrandSettings";
 
 const STATUS_COLORS = {
   "Live Demo": "bg-emerald-500/15 text-emerald-400 border-emerald-500/20",
@@ -206,6 +207,7 @@ function AdminProjectsContent() {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
+        <BrandSettings />
         <PortfolioDisplaySettings />
         {/* Filters */}
         <div className="flex flex-wrap gap-3 mb-6">

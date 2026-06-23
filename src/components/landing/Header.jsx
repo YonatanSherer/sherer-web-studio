@@ -3,7 +3,20 @@ import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { useLang } from "@/lib/LanguageContext";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/siteConfig";
 import { scrollToSection } from "@/lib/scrollUtils";
+import { useBrandSettings } from "@/lib/useBrandSettings";
 import { motion, AnimatePresence } from "framer-motion";
+
+const RADIUS_CLASS = {
+  none: "rounded-none",
+  rounded: "rounded-lg",
+  full: "rounded-full",
+};
+
+const BG_CLASS = {
+  transparent: "",
+  dark: "bg-[#0a0e1a]",
+  glow: "bg-[#00b4ff]/10 shadow-[0_0_12px_rgba(0,180,255,0.3)]",
+};
 
 const LANGUAGES = [
   { code: "en", native: "English" },
@@ -18,6 +31,7 @@ const LANGUAGES = [
 
 export default function Header({ activeSection }) {
   const { lang, setLang, isRTL } = useLang();
+  const { logoUrl, altText, config } = useBrandSettings();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -130,10 +144,26 @@ export default function Header({ activeSection }) {
             {/* Logo */}
             <button
               onClick={() => handleNavClick("home")}
-              className="text-base md:text-lg font-bold tracking-tight text-white hover:text-[#00b4ff] transition-colors flex-shrink-0"
+              className="flex items-center gap-2 text-base md:text-lg font-bold tracking-tight text-white hover:text-[#00b4ff] transition-colors flex-shrink-0"
               aria-label="Go to home"
             >
-              {SITE_CONFIG.brandName}
+              {logoUrl && (
+                <>
+                  <img
+                    src={logoUrl}
+                    alt={altText}
+                    style={{ width: config.mobileSize, height: config.mobileSize }}
+                    className={`object-contain lg:hidden ${RADIUS_CLASS[config.borderRadius] || ""} ${BG_CLASS[config.background] || ""}`}
+                  />
+                  <img
+                    src={logoUrl}
+                    alt={altText}
+                    style={{ width: config.desktopSize, height: config.desktopSize }}
+                    className={`object-contain hidden lg:block ${RADIUS_CLASS[config.borderRadius] || ""} ${BG_CLASS[config.background] || ""}`}
+                  />
+                </>
+              )}
+              <span>{SITE_CONFIG.brandName}</span>
             </button>
 
             <div className="flex-1" />
