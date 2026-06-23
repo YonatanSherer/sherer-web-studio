@@ -1,39 +1,90 @@
-**Welcome to your Base44 project** 
+# Sherer Web Studio
 
-**About**
+A modern, responsive, multilingual portfolio and business website for **Sherer Web Studio** — a web studio focused on building premium websites, landing pages, business sites, and practical web apps.
 
-View and Edit  your app on [Base44.com](http://Base44.com) 
+## Live Website
 
-This project contains everything you need to run your app locally.
+https://shererwebstudio.base44.app
 
-**Edit the code in your local development environment**
+## About the Project
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+Sherer Web Studio is my main portfolio and service website.
+It presents my web development work, live projects, services, pricing/packages, process, FAQ, and contact options.
 
-**Prerequisites:** 
+The website is designed to feel modern, premium, animated, and conversion-focused, while supporting multiple languages and responsive layouts.
 
-1. Clone the repository using the project's Git URL 
-2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Create an `.env.local` file and set the right environment variables
+## Main Features
 
+* Responsive landing page for desktop, tablet, and mobile
+* Multilingual support
+* RTL support for Hebrew and Arabic
+* Featured Work / Projects section
+* Project category filtering
+* Floating contact/social buttons
+* Call-to-action buttons for client inquiries
+* Premium dark UI with glow effects and animations
+* Admin-controlled project/content management
+* Base44-powered deployment and editing workflow
+
+## Featured Projects
+
+The website showcases projects such as:
+
+* Tidy Notes Pro
+* Smart Study Planner
+* Siam Wellness Spa
+* Nakhon Explorer Tours
+* TukTong
+* TrendWise
+* PyQuest
+
+## Tech Stack
+
+* React
+* Tailwind CSS
+* JavaScript
+* Base44
+* Responsive Web Design
+* RTL / Multilingual UI
+
+## Local Development
+
+To run the project locally:
+
+```bash
+npm install
+npm run dev
 ```
+
+Create a `.env.local` file if required by Base44:
+
+```env
 VITE_BASE44_APP_ID=your_app_id
-VITE_BASE44_APP_BASE_URL=your_backend_url
-
-e.g.
-VITE_BASE44_APP_ID=cbef744a8545c389ef439ea6
-VITE_BASE44_APP_BASE_URL=https://my-to-do-list-81bfaad7.base44.app
+VITE_BASE44_APP_BASE_URL=your_base44_backend_url
 ```
 
-Run the app: `npm run dev`
+Important: do not commit real secrets, private keys, or sensitive environment variables.
 
-**Publish your changes**
+## Deployment
 
-Open [Base44.com](http://Base44.com) and click on Publish.
+The project is managed and published through Base44.
 
-**Docs & Support**
+After pushing changes to the connected GitHub repository, publish the latest version from the Base44 dashboard.
 
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
+## Project Status
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+Active portfolio project.
+
+## Author
+
+**Yonatan Sherer**
+Sherer Web Studio
+
+Website: https://shererwebstudio.base44.app
+GitHub: https://github.com/YonatanSherer
+
+## License
+
+All rights reserved.
+
+This project is part of my personal portfolio and is not intended for unrestricted reuse without permission.
