@@ -11,6 +11,7 @@ import { Mail, Send, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { usePricing } from "@/lib/usePricing";
+import { trackClick } from "@/lib/analyticsTracking";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -50,6 +51,7 @@ export default function ContactSection() {
     setLoading(true);
     await base44.entities.ContactSubmission.create({ ...data, language: lang });
     base44.analytics.track({ eventName: "contact_form_submit", properties: { language: lang } });
+    trackClick("contact_submit");
     setSubmitted(true);
     setLoading(false);
   };
@@ -86,7 +88,7 @@ export default function ContactSection() {
               href={SITE_CONFIG.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "contact" } })}
+              onClick={() => { base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "contact" } }); trackClick("contact_whatsapp"); }}
               className="flex items-center gap-3 p-4 rounded-xl border border-[#25D366]/25 bg-[#25D366]/5 hover:bg-[#25D366]/10 transition-colors"
               style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
               aria-label={t("floatWhatsApp")}
@@ -104,7 +106,7 @@ export default function ContactSection() {
               href={SITE_CONFIG.line}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "line_click", properties: { location: "contact" } })}
+              onClick={() => { base44.analytics.track({ eventName: "line_click", properties: { location: "contact" } }); trackClick("contact_line"); }}
               className="flex items-center gap-3 p-4 rounded-xl border border-[#06C755]/25 bg-[#06C755]/5 hover:bg-[#06C755]/10 transition-colors"
               style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
               aria-label={t("floatLINE")}

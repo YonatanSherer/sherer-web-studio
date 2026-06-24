@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { scrollToSection } from "@/lib/scrollUtils";
+import { trackClick } from "@/lib/analyticsTracking";
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -50,6 +51,7 @@ export default function FinalCta() {
             onClick={() => {
               scrollToSection("contact");
               base44.analytics.track({ eventName: "final_cta_free_quote" });
+              trackClick("final_cta_quote");
             }}
           >
             {t("finalCta1")}
@@ -64,7 +66,7 @@ export default function FinalCta() {
               href={SITE_CONFIG.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "final_cta" } })}
+              onClick={() => { base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "final_cta" } }); trackClick("whatsapp"); }}
               aria-label={t("floatWhatsApp")}
             >
               <WhatsAppIcon />
@@ -80,7 +82,7 @@ export default function FinalCta() {
               href={SITE_CONFIG.line}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "line_click", properties: { location: "final_cta" } })}
+              onClick={() => { base44.analytics.track({ eventName: "line_click", properties: { location: "final_cta" } }); trackClick("line"); }}
               aria-label={t("floatLINE")}
             >
               <LINEIcon />

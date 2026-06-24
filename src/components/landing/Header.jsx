@@ -4,6 +4,7 @@ import { useLang } from "@/lib/LanguageContext";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/siteConfig";
 import { scrollToSection } from "@/lib/scrollUtils";
 import { useBrandSettings } from "@/lib/useBrandSettings";
+import { trackClick } from "@/lib/analyticsTracking";
 import { motion, AnimatePresence } from "framer-motion";
 
 const RADIUS_CLASS = {
@@ -90,6 +91,7 @@ export default function Header({ activeSection }) {
   const handleLangSelect = useCallback((code) => {
     setLang(code);
     setLangOpen(false);
+    trackClick("language_change");
   }, [setLang]);
 
   const currentLang = LANGUAGES.find((l) => l.code === lang) || LANGUAGES[0];

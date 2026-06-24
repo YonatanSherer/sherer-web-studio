@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { CONTACT_LINKS } from "@/lib/siteConfig";
 import { scrollToSection } from "@/lib/scrollUtils";
+import { trackClick } from "@/lib/analyticsTracking";
 
 const TRUST_ICONS = [Smartphone, Languages, DollarSign, Target, Code];
 
@@ -110,6 +111,7 @@ export default function HeroSection() {
                 onClick={() => {
                   scrollTo("contact");
                   base44.analytics.track({ eventName: "hero_cta_free_quote_click" });
+                  trackClick("free_quote");
                 }}
               >
                 {t("heroCta1")}
@@ -119,7 +121,7 @@ export default function HeroSection() {
                 size="lg"
                 variant="outline"
                 className="border-[#facc15]/70 text-white bg-transparent hover:bg-[#facc15]/10 hover:border-[#facc15] hover:text-white focus-visible:border-[#facc15] focus-visible:text-white font-semibold px-6 h-12 text-[15px] rounded-xl transition-all duration-200 shadow-[0_0_14px_rgba(250,204,21,0.25)] hover:shadow-[0_0_22px_rgba(250,204,21,0.40)]"
-                onClick={() => scrollTo("work")}
+                onClick={() => { scrollTo("work"); trackClick("view_work"); }}
               >
                 {t("heroCta2")}
               </Button>
@@ -137,7 +139,7 @@ export default function HeroSection() {
                 href={CONTACT_LINKS.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "hero" } })}
+                onClick={() => { base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "hero" } }); trackClick("whatsapp"); }}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/12 text-[#25D366] text-xs font-medium hover:bg-[#25D366]/22 transition-colors border border-[#25D366]/20"
                 aria-label={t("floatWhatsApp")}
               >
@@ -148,7 +150,7 @@ export default function HeroSection() {
                 href={CONTACT_LINKS.line}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => base44.analytics.track({ eventName: "line_click", properties: { location: "hero" } })}
+                onClick={() => { base44.analytics.track({ eventName: "line_click", properties: { location: "hero" } }); trackClick("line"); }}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#06C755]/12 text-[#06C755] text-xs font-medium hover:bg-[#06C755]/22 transition-colors border border-[#06C755]/20"
                 aria-label={t("floatLINE")}
               >
@@ -159,7 +161,7 @@ export default function HeroSection() {
                 href={CONTACT_LINKS.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => base44.analytics.track({ eventName: "linkedin_click", properties: { location: "hero" } })}
+                onClick={() => { base44.analytics.track({ eventName: "linkedin_click", properties: { location: "hero" } }); trackClick("linkedin"); }}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#0A66C2]/12 text-[#0A66C2] text-xs font-medium hover:bg-[#0A66C2]/22 transition-colors border border-[#0A66C2]/20"
                 aria-label={t("floatLinkedIn")}
               >
@@ -170,7 +172,7 @@ export default function HeroSection() {
                 href={CONTACT_LINKS.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => base44.analytics.track({ eventName: "github_click", properties: { location: "hero" } })}
+                onClick={() => { base44.analytics.track({ eventName: "github_click", properties: { location: "hero" } }); trackClick("github"); }}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/8 text-white/70 text-xs font-medium hover:bg-white/14 hover:text-white transition-colors border border-white/15"
                 aria-label={t("floatGitHub")}
               >

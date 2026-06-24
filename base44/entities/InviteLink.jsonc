@@ -1,0 +1,45 @@
+{
+  "name": "InviteLink",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Friendly name for the invite link (e.g. 'LinkedIn campaign')"
+    },
+    "code": {
+      "type": "string",
+      "description": "Unique invite code used in ?invite=CODE URL parameter"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this invite link is active"
+    }
+  },
+  "required": [
+    "name",
+    "code"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

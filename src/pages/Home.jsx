@@ -15,6 +15,7 @@ import ContactSection from "@/components/landing/ContactSection";
 import FinalCta from "@/components/landing/FinalCta";
 import Footer from "@/components/landing/Footer";
 import FloatingButtons from "@/components/landing/FloatingButtons";
+import { trackVisit } from "@/lib/analyticsTracking";
 
 // Must match section IDs rendered in each component
 const SECTION_IDS = ["home", "work", "services", "packages", "process", "faq", "contact"];
@@ -22,6 +23,10 @@ const SECTION_IDS = ["home", "work", "services", "packages", "process", "faq", "
 export default function Home() {
   const { dir } = useLang();
   const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    trackVisit();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {

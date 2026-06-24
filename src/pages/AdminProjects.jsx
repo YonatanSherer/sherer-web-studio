@@ -195,6 +195,9 @@ function AdminProjectsContent() {
             <div className="w-px h-5 bg-white/10" />
             <h1 className="text-base font-bold text-white">Portfolio Admin</h1>
             <span className="hidden sm:inline text-xs text-white/30">{activeCount} active · {projects.length} total</span>
+            <Link to="/admin/analytics" className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 hover:text-white text-xs font-medium transition-colors border border-white/10">
+              Analytics
+            </Link>
           </div>
           <button
             onClick={() => setModalProject(null)}

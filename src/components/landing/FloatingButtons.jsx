@@ -4,6 +4,7 @@ import { useLang } from "@/lib/LanguageContext";
 import { base44 } from "@/api/base44Client";
 import { X, MessageCircle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { trackClick } from "@/lib/analyticsTracking";
 
 const WhatsAppIcon = ({ size = 20 }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} className="fill-current" xmlns="http://www.w3.org/2000/svg">
@@ -74,7 +75,7 @@ export default function FloatingButtons() {
       bgClass: "bg-[#25D366] shadow-[#25D366]/25 hover:shadow-[#25D366]/40",
       iconColor: "text-white",
       icon: <WhatsAppIcon size={20} />,
-      track: () => base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "floating" } }),
+      track: () => { base44.analytics.track({ eventName: "whatsapp_click", properties: { location: "floating" } }); trackClick("whatsapp"); },
     },
     {
       href: CONTACT_LINKS.line,
@@ -83,7 +84,7 @@ export default function FloatingButtons() {
       bgClass: "bg-[#06C755] shadow-[#06C755]/25 hover:shadow-[#06C755]/40",
       iconColor: "text-white",
       icon: <LINEIcon size={20} />,
-      track: () => base44.analytics.track({ eventName: "line_click", properties: { location: "floating" } }),
+      track: () => { base44.analytics.track({ eventName: "line_click", properties: { location: "floating" } }); trackClick("line"); },
     },
     {
       href: CONTACT_LINKS.linkedin,
@@ -92,7 +93,7 @@ export default function FloatingButtons() {
       bgClass: "bg-[#0A66C2] shadow-[#0A66C2]/25 hover:shadow-[#0A66C2]/40",
       iconColor: "text-white",
       icon: <LinkedInIcon size={18} />,
-      track: () => base44.analytics.track({ eventName: "linkedin_click", properties: { location: "floating" } }),
+      track: () => { base44.analytics.track({ eventName: "linkedin_click", properties: { location: "floating" } }); trackClick("linkedin"); },
     },
     {
       href: CONTACT_LINKS.github,
@@ -101,7 +102,7 @@ export default function FloatingButtons() {
       bgClass: "bg-[#24292e] shadow-black/25 hover:shadow-black/40 border border-white/10",
       iconColor: "text-white",
       icon: <GitHubIcon size={18} />,
-      track: () => base44.analytics.track({ eventName: "github_click", properties: { location: "floating" } }),
+      track: () => { base44.analytics.track({ eventName: "github_click", properties: { location: "floating" } }); trackClick("github"); },
     },
     {
       href: CONTACT_LINKS.email,
@@ -110,7 +111,7 @@ export default function FloatingButtons() {
       bgClass: "bg-[#EA4335] shadow-[#EA4335]/25 hover:shadow-[#EA4335]/40",
       iconColor: "text-white",
       icon: <GmailIcon size={18} />,
-      track: () => base44.analytics.track({ eventName: "email_click", properties: { location: "floating" } }),
+      track: () => { base44.analytics.track({ eventName: "email_click", properties: { location: "floating" } }); trackClick("gmail"); },
     },
   ];
 

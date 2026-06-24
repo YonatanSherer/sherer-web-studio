@@ -1,0 +1,104 @@
+{
+  "name": "AnalyticsEvent",
+  "type": "object",
+  "properties": {
+    "eventType": {
+      "type": "string",
+      "enum": [
+        "visit",
+        "click"
+      ],
+      "description": "Whether this is a page visit or a CTA click"
+    },
+    "inviteCode": {
+      "type": "string",
+      "description": "Invite code from URL or 'direct' if none"
+    },
+    "actionType": {
+      "type": "string",
+      "description": "For click events: which action was clicked (e.g. whatsapp, line, free_quote)"
+    },
+    "fullUrl": {
+      "type": "string",
+      "description": "Full URL visited"
+    },
+    "page": {
+      "type": "string",
+      "description": "Page or path"
+    },
+    "language": {
+      "type": "string",
+      "description": "Selected website language"
+    },
+    "referrer": {
+      "type": "string",
+      "description": "Referrer or source if available"
+    },
+    "deviceType": {
+      "type": "string",
+      "enum": [
+        "desktop",
+        "tablet",
+        "mobile"
+      ],
+      "description": "Device type"
+    },
+    "browser": {
+      "type": "string",
+      "description": "Browser name"
+    },
+    "os": {
+      "type": "string",
+      "description": "Operating system"
+    },
+    "country": {
+      "type": "string",
+      "description": "Approximate country from IP geolocation"
+    },
+    "region": {
+      "type": "string",
+      "description": "Approximate region from IP geolocation"
+    },
+    "city": {
+      "type": "string",
+      "description": "Approximate city from IP geolocation"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone from browser or geolocation"
+    },
+    "sessionId": {
+      "type": "string",
+      "description": "Anonymous session/visitor ID stored in localStorage"
+    },
+    "userAgent": {
+      "type": "string",
+      "description": "User agent string for device/browser detection"
+    }
+  },
+  "required": [
+    "eventType"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

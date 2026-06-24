@@ -8,6 +8,7 @@ import { Check, Star, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { base44 } from "@/api/base44Client";
 import { scrollToSection } from "@/lib/scrollUtils";
+import { trackClick } from "@/lib/analyticsTracking";
 
 export default function PackagesSection() {
   const { t, isRTL, lang } = useLang();
@@ -126,6 +127,7 @@ export default function PackagesSection() {
                       onClick={() => {
                         scrollToSection("contact");
                         base44.analytics.track({ eventName: "package_cta_click", properties: { package: pkg.name } });
+                        trackClick("package_cta");
                       }}
                     >
                       {pkg.cta}

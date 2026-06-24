@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Globe, Check, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { base44 } from "@/api/base44Client";
+import { trackClick } from "@/lib/analyticsTracking";
 
 const STATUS_COLORS = {
   "Live Demo": "bg-emerald-500/90 text-white border-0 shadow-sm",
@@ -234,7 +235,7 @@ function ProjectCard({ project, index, t, isRTL, showBadges }) {
               href={project.liveDemoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "portfolio_live_demo_click", properties: { project: project.title } })}
+              onClick={() => { base44.analytics.track({ eventName: "portfolio_live_demo_click", properties: { project: project.title } }); trackClick("project_demo"); }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00b4ff] hover:bg-[#0099dd] text-white text-xs font-semibold transition-colors"
               style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
             >
