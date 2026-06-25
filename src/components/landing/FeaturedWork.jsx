@@ -250,7 +250,7 @@ function ProjectCard({ project, index, t, isRTL, showBadges }) {
               rel="noopener noreferrer"
               aria-label={`View GitHub repository for ${project.title}`}
               onClick={() => { base44.analytics.track({ eventName: "portfolio_github_click", properties: { project: project.title } }); trackClick("project_github_click"); }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 text-xs font-medium transition-colors border border-white/10"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white hover:bg-[#111827] text-[#111827] hover:text-white text-xs font-semibold transition-colors border border-[#111827] hover:border-[#111827]"
               style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
             >
               GitHub
