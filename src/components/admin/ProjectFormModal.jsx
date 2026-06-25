@@ -18,7 +18,7 @@ const STATUS_COLORS = {
 const EMPTY = {
   title: "", shortDescription: "", fullDescription: "",
   category: "Business Website", status: "Demo Project",
-  previewImage: "", liveDemoUrl: "", githubUrl: "",
+  previewImage: "", liveDemoUrl: "", githubUrl: "", showGithubButton: false,
   technologies: [], languages: [], deliverables: [],
   featured: false, active: true, displayOrder: 0,
 };
@@ -227,9 +227,15 @@ export default function ProjectFormModal({ project, onClose, onSaved }) {
                   className="bg-[#0d1529] border-white/10 text-white" placeholder="https://..." />
               </div>
               <div>
-                <label className="block text-xs font-medium text-white/60 mb-1.5">GitHub URL</label>
+                <label className="block text-xs font-medium text-white/60 mb-1.5">GitHub Repository URL</label>
                 <Input value={form.githubUrl || ""} onChange={e => set("githubUrl", e.target.value)}
-                  className="bg-[#0d1529] border-white/10 text-white" placeholder="https://github.com/..." />
+                  className="bg-[#0d1529] border-white/10 text-white" placeholder="https://github.com/YonatanSherer/project-name" />
+                <label className="flex items-center gap-2 cursor-pointer text-xs text-white/60 mt-2">
+                  <input type="checkbox" checked={form.showGithubButton || false} onChange={e => set("showGithubButton", e.target.checked)}
+                    className="rounded accent-[#00b4ff]" />
+                  Show GitHub Button
+                </label>
+                <p className="text-[10px] text-white/30 mt-1">Show this only when the repository is ready to be public.</p>
               </div>
             </div>
 

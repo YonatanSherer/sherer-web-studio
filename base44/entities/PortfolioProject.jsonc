@@ -50,6 +50,11 @@
       "type": "string",
       "description": "URL to the GitHub repository"
     },
+    "showGithubButton": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to show the GitHub button on the project card"
+    },
     "technologies": {
       "type": "array",
       "items": {

@@ -243,12 +243,13 @@ function ProjectCard({ project, index, t, isRTL, showBadges }) {
               <ExternalLink className="w-3 h-3" />
             </a>
           )}
-          {project.githubUrl && (
+          {project.showGithubButton && project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => base44.analytics.track({ eventName: "portfolio_github_click", properties: { project: project.title } })}
+              aria-label={`View GitHub repository for ${project.title}`}
+              onClick={() => { base44.analytics.track({ eventName: "portfolio_github_click", properties: { project: project.title } }); trackClick("project_github_click"); }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 text-xs font-medium transition-colors border border-white/10"
               style={{ flexDirection: isRTL ? "row-reverse" : "row" }}
             >
