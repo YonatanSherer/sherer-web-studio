@@ -165,7 +165,16 @@ export default function Header({ activeSection }) {
                   />
                 </>
               )}
-              <span>{SITE_CONFIG.brandName}</span>
+              <span
+                className="brand-text"
+                style={{
+                  '--brand-text-desktop': `${config.brandTextDesktop || 20}px`,
+                  '--brand-text-tablet': `${config.brandTextTablet || 18}px`,
+                  '--brand-text-mobile': `${config.brandTextMobile || 16}px`,
+                }}
+              >
+                {SITE_CONFIG.brandName}
+              </span>
             </button>
 
             <div className="flex-1" />

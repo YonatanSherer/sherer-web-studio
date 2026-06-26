@@ -270,6 +270,70 @@ export default function BrandSettings() {
         </div>
       </div>
 
+      {/* Brand Text Font Size */}
+      <div className="mb-5">
+        <label className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2">Header Brand Text Font Size</label>
+        <div className="grid sm:grid-cols-3 gap-4">
+          <div>
+            <div className="flex justify-between text-xs text-white/50 mb-1">
+              <span>Desktop</span>
+              <span className="text-white/70 font-mono">{config.brandTextDesktop}px</span>
+            </div>
+            <input
+              type="range"
+              min="16"
+              max="32"
+              value={config.brandTextDesktop}
+              onChange={(e) => setConfig({ ...config, brandTextDesktop: Number(e.target.value) })}
+              className="w-full accent-[#00b4ff]"
+            />
+          </div>
+          <div>
+            <div className="flex justify-between text-xs text-white/50 mb-1">
+              <span>Tablet</span>
+              <span className="text-white/70 font-mono">{config.brandTextTablet}px</span>
+            </div>
+            <input
+              type="range"
+              min="15"
+              max="28"
+              value={config.brandTextTablet}
+              onChange={(e) => setConfig({ ...config, brandTextTablet: Number(e.target.value) })}
+              className="w-full accent-[#00b4ff]"
+            />
+          </div>
+          <div>
+            <div className="flex justify-between text-xs text-white/50 mb-1">
+              <span>Mobile</span>
+              <span className="text-white/70 font-mono">{config.brandTextMobile}px</span>
+            </div>
+            <input
+              type="range"
+              min="14"
+              max="24"
+              value={config.brandTextMobile}
+              onChange={(e) => setConfig({ ...config, brandTextMobile: Number(e.target.value) })}
+              className="w-full accent-[#00b4ff]"
+            />
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setConfig({ ...config, brandTextDesktop: 20, brandTextTablet: 18, brandTextMobile: 16 })}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-white/60 text-xs font-medium transition-colors border border-white/10 mt-3"
+        >
+          <RotateCcw className="w-3 h-3" />
+          Reset Font Sizes
+        </button>
+        {/* Live preview */}
+        <div className="mt-3 bg-[#0a0e1a] rounded-xl p-3 border border-white/5">
+          <div className="flex items-center gap-2 h-10">
+            {previewImg(config.desktopSize)}
+            <span className="text-white font-bold tracking-tight" style={{ fontSize: `${config.brandTextDesktop}px` }}>Sherer Web Studio</span>
+          </div>
+        </div>
+      </div>
+
       {/* Previews */}
       <div className="mb-5">
         <label className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2">Preview</label>

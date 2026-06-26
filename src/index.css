@@ -104,3 +104,18 @@ body {
 [dir="rtl"] {
   text-align: right;
 }
+
+.brand-text {
+  font-size: var(--brand-text-mobile, 16px);
+  line-height: 1.2;
+}
+@media (min-width: 768px) {
+  .brand-text {
+    font-size: var(--brand-text-tablet, 18px);
+  }
+}
+@media (min-width: 1024px) {
+  .brand-text {
+    font-size: var(--brand-text-desktop, 20px);
+  }
+}

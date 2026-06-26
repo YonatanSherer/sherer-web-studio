@@ -6,6 +6,9 @@ export const DEFAULT_BRAND_CONFIG = {
   mobileSize: 26,
   borderRadius: "rounded",
   background: "transparent",
+  brandTextDesktop: 20,
+  brandTextTablet: 18,
+  brandTextMobile: 16,
 };
 
 export const DEFAULT_ALT_TEXT = "Sherer Web Studio Logo";
