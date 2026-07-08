@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useLang } from "@/lib/LanguageContext";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/siteConfig";
 import { Mail } from "lucide-react";
@@ -80,6 +81,16 @@ export default function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link to="/about" className="text-xs hover:text-white transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-xs hover:text-white transition-colors">
+                  Contact Page
+                </Link>
+              </li>
             </ul>
           </div>
 
